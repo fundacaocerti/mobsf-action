@@ -1,0 +1,9 @@
+name: 'GitHub Action for MobSF'
+author: 'Ian Koerich Maciel'
+description: 'Wraps the MobSF docker to enable workflows on GitHub Actions'
+branding:
+  icon: 'package'
+  color: 'gray-dark'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
