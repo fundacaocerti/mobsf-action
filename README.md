@@ -47,17 +47,23 @@ jobs:
         run: flutter build apk
 
       - name: Run MobSF Analysis
-        uses: inm-certi/mobsf-action@v1
+        uses: inm-certi/mobsf-action@v1.1
         env:
           INPUT_FILE_NAME: build/app/outputs/apk/app.apk
           SCAN_TYPE: apk
           OUTPUT_FILE_NAME: mobsf-report
 
-      - name: Upload MobSF Analysis Result
+      - name: Upload MobSF Analysis PDF Result
         uses: actions/upload-artifact@v2
         with:
           name: mobsf-report.pdf
           path: mobsf-report.pdf
+
+      - name: Upload MobSF Analysis JSON Result
+        uses: actions/upload-artifact@v2
+        with:
+          name: mobsf-report.json
+          path: mobsf-report.json
 ```
 Alternatively:
 
@@ -65,6 +71,8 @@ Alternatively:
         with:
           SCAN_TYPE: ipa
 ```
+
+Thanks @ajinabraham for the support on troubleshooting this development.
 
 ## License
 
