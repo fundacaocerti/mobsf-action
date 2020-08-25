@@ -23,7 +23,7 @@ else
   fi
 fi
 
-export MOBSF_API_KEY="45ccbf14aca709d874da62fb5ffba096012eed2c09cfc4718e7ce59364f6082e"
+export MOBSF_API_KEY="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 64)"
 export MOBSF_URL="localhost:8000"
 
 cd /root/Mobile-Security-Framework-MobSF
