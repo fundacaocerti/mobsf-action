@@ -23,14 +23,14 @@ else
   fi
 fi
 
-export MOBSF_API_KEY="45ccbf14aca709d874da62fb5ffba096012eed2c09cfc4718e7ce59364f6082e"
+export MOBSF_API_KEY="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 64)"
 export MOBSF_URL="localhost:8000"
 
 cd /root/Mobile-Security-Framework-MobSF
 python3 manage.py makemigrations 2&>> manage.out && \
 python3 manage.py makemigrations StaticAnalyzer 2&>> manage.out && \
 python3 manage.py migrate 2&>> manage.out
-gunicorn -b 0.0.0.0:8000 "MobSF.wsgi:application" --workers=1 --threads=10 --timeout=1800 &
+gunicorn -b 127.0.0.1:8000 "MobSF.wsgi:application" --workers=1 --threads=10 --timeout=1800 &
 
 # Wait to start MobSF
 sleep 2
