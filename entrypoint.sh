@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
 
+cd $GITHUB_WORKSPACE
 if [ -z "$INPUT_FILE_NAME" ] || [ ! -f "$INPUT_FILE_NAME" ]; then
   echo "INPUT_FILE_NAME is required to run MobSF action. (INPUT_FILE_NAME = $INPUT_FILE_NAME)"
-  echo "pwd: $PWD"
-  echo "ls -la $INPUT_FILE_NAME"
   exit 126
 fi
 
