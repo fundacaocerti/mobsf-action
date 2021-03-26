@@ -10,7 +10,7 @@ This Action for [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF
 
 ## Example
 
-To authenticate with Firebase, and deploy to Firebase Hosting:
+To build a Flutter project with MobSF Analysis:
 
 ```yaml
 name: Build and Deploy
@@ -47,7 +47,7 @@ jobs:
         run: flutter build apk
 
       - name: Run MobSF Analysis
-        uses: inm-certi/mobsf-action@v1.4
+        uses: inm-certi/mobsf-action@v1.5
         env:
           INPUT_FILE_NAME: build/app/outputs/apk/app.apk
           SCAN_TYPE: apk
