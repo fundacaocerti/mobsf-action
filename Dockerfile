@@ -1,8 +1,8 @@
 FROM opensecurity/mobile-security-framework-mobsf
 
-LABEL version="1.0.0"
-LABEL repository="https://github.com/inm-certi/mobsf-action"
-LABEL homepage="https://github.com/inm-certi/mobsf-action"
+LABEL version="1.7.1"
+LABEL repository="https://github.com/fundacaocerti/mobsf-action"
+LABEL homepage="https://github.com/fundacaocerti/mobsf-action"
 LABEL maintainer="Ian Koerich Maciel <inm@certi.org.br>"
 
 LABEL com.github.actions.name="GitHub Action for MobSF"
