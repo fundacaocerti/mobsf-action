@@ -46,12 +46,31 @@ jobs:
       - name: Flutter Build
         run: flutter build apk
 
+      - name: Fix Permissions for MobSF Docker
+        run: |
+          set -e
+          sudo mkdir -p /home/runner/work/_temp/_github_home
+          sudo chown -R 9901:9901 /home/runner/work/_temp/_github_home
+
+          sudo mkdir -p /home/runner/work/$REPO_NAME/$REPO_NAME
+          sudo chown -R 9901:9901 /home/runner/work/$REPO_NAME/$REPO_NAME
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
+
       - name: Run MobSF Analysis
         uses: fundacaocerti/mobsf-action@v1.7.2
         env:
           INPUT_FILE_NAME: build/app/outputs/apk/app.apk
           SCAN_TYPE: apk
           OUTPUT_FILE_NAME: mobsf-report
+
+      - name: Cleanup MobSF Permissions
+        run: |
+          set -e
+          sudo chown -R runner:docker /home/runner/work/_temp/_github_home
+          sudo chown -R runner:docker /home/runner/work/$REPO_NAME/$REPO_NAME
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
 
       - name: Upload MobSF Analysis PDF Result
         uses: actions/upload-artifact@v2
