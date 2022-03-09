@@ -47,7 +47,7 @@ jobs:
         run: flutter build apk
 
       - name: Run MobSF Analysis
-        uses: fundacaocerti/mobsf-action@v1.6
+        uses: fundacaocerti/mobsf-action@v1.7.2
         env:
           INPUT_FILE_NAME: build/app/outputs/apk/app.apk
           SCAN_TYPE: apk
