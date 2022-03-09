@@ -12,6 +12,12 @@ This Action for [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF
 
 To build a Flutter project with MobSF Analysis:
 
+> :warning: **Latest Version**: Recent versions of MobSF docker containers run as non root.
+> It is necessary to fix docker permissions and the following example will work only on GitHub hosted runners (the path will be different on self hosted runners).
+> Please see https://github.com/fundacaocerti/mobsf-action/issues/15 and https://github.com/fundacaocerti/mobsf-action/pull/16#issuecomment-1042312952
+>
+> You can use version [1.7.2](https://github.com/fundacaocerti/mobsf-action/tree/v1.7.2) to avoid this issue.
+
 ```yaml
 name: Build and Deploy
 on:
@@ -58,7 +64,7 @@ jobs:
           REPO_NAME: ${{ github.event.repository.name }}
 
       - name: Run MobSF Analysis
-        uses: fundacaocerti/mobsf-action@v1.7.2
+        uses: fundacaocerti/mobsf-action@latest
         env:
           INPUT_FILE_NAME: build/app/outputs/apk/app.apk
           SCAN_TYPE: apk
